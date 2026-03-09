@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string timeConversion(string s) {
+    string hour_str = s.substr(0, 2);
+    string rest = s.substr(2, 6);
+    string am_pm = s.substr(8, 2);
+    
+    int hour = stoi(hour_str);
+
+    if (am_pm == "AM") {
+        if (hour == 12) {
+            hour_str = "00";
+        }
+    } else {
+        if (hour != 12) {
+            hour += 12;
+            hour_str = to_string(hour);
+        }
+    }
+
+    return hour_str + rest;
+}
+
+int main() {
+    string s;
+    if (cin >> s) {
+        cout << timeConversion(s) << endl;
+    }
+    return 0;
+}
