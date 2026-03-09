@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int diagonalDifference(vector<vector<int>> arr) {
+    int n = arr.size();
+    int primary_diag = 0;
+    int secondary_diag = 0;
+    
+    for (int i = 0; i < n; i++) {
+        primary_diag += arr[i][i];
+        secondary_diag += arr[i][n - 1 - i];
+    }
+    
+    return abs(primary_diag - secondary_diag);
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<vector<int>> arr(n, vector<int>(n));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> arr[i][j];
+        }
+    }
+    
+    int result = diagonalDifference(arr);
+    cout << result << endl;
+    
+    return 0;
+}
